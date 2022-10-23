@@ -1,0 +1,3 @@
+# Only add no-op commits to this file
+# To prevent these commits to show in git blame
+# git config blame.ignoreRevsFile .git-blame-ignore-revs

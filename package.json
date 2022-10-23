@@ -1,0 +1,10 @@
+{
+  "name": "disorder",
+  "version": "0.1",
+  "repository": "https://github.com/xfalcox/disorder",
+  "author": "xfalcox",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-discourse": "^3.0.0"
+  }
+}
