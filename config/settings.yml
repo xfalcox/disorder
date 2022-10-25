@@ -3,7 +3,7 @@ plugins:
     default: false
     client: true
   disorder_inference_service_api_endpoint:
-    default: 'localhost'
+    default: 'http://localhost'
   disorder_inference_service_api_model:
     type: enum
     default: unbiased
@@ -11,3 +11,27 @@ plugins:
       - unbiased
       - multilingual
       - original
+  disorder_flag_automatically:
+    default: true
+    client: false
+  disorder_flag_threshold_toxicity:
+    default: 70
+    client: false
+  disorder_flag_threshold_severe_toxicity:
+    default: 60
+    client: false
+  disorder_flag_threshold_obscene:
+    default: 60
+    client: false
+  disorder_flag_threshold_identity_attack:
+    default: 60
+    client: false
+  disorder_flag_threshold_insult:
+    default: 60
+    client: false
+  disorder_flag_threshold_threat:
+    default: 60
+    client: false
+  disorder_flag_threshold_sexual_explicit:
+    default: 60
+    client: false
