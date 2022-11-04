@@ -2,7 +2,6 @@
 
 module ::Jobs
   class ClassifyPost < ::Jobs::Base
-
     def execute(args)
       return unless SiteSetting.disorder_enabled
 
