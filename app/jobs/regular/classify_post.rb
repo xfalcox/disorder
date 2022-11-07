@@ -9,9 +9,9 @@ module ::Jobs
       return if post_id.blank?
 
       post = Post.find_by(id: post_id, post_type: Post.types[:regular])
-      return if post.raw.blank?
+      return if post&.raw.blank?
 
-      ::Disorder::InferenceManager.new(post).classify_post
+      ::Disorder::PostClassifier.new(post).classify!
     end
   end
 end

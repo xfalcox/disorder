@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-disorder_username = 'disorder_bot'
+disorder_username = 'disorderbot'
 
 def seed_primary_email
   UserEmail.seed do |ue|
