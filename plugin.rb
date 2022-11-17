@@ -20,12 +20,22 @@ after_initialize do
   require_relative "lib/inference_manager.rb"
   require_relative "lib/classifier.rb"
   require_relative "lib/post_classifier.rb"
+  require_relative "lib/post_validator.rb"
   require_relative "lib/chat_message_classifier.rb"
   require_relative "app/jobs/regular/classify_post.rb"
   require_relative "app/jobs/regular/classify_chat_message.rb"
 
   on(:post_created) { |post| Jobs.enqueue(:classify_post, post_id: post.id) }
   on(:post_edited) { |post| Jobs.enqueue(:classify_post, post_id: post.id) }
-  on(:chat_message_created) { |chat_message| Jobs.enqueue(:classify_chat_message, chat_message_id: chat_message.id) }
-  on(:chat_message_edited) { |chat_message| Jobs.enqueue(:classify_chat_message, chat_message_id: chat_message.id) }
+  on(:chat_message_created) do |chat_message|
+    Jobs.enqueue(:classify_chat_message, chat_message_id: chat_message.id)
+  end
+  on(:chat_message_edited) do |chat_message|
+    Jobs.enqueue(:classify_chat_message, chat_message_id: chat_message.id)
+  end
+  on(:validate_post) do |post|
+    if SiteSetting.disorder_block_posting_above_toxicity
+      ::Disorder::PostValidator.new(post).classify!
+    end
+  end
 end

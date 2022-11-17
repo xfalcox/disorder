@@ -3,7 +3,7 @@ plugins:
     default: false
     client: true
   disorder_inference_service_api_endpoint:
-    default: 'http://localhost'
+    default: "http://localhost"
   disorder_inference_service_api_model:
     type: enum
     default: unbiased
@@ -13,6 +13,9 @@ plugins:
       - original
   disorder_flag_automatically:
     default: true
+    client: false
+  disorder_block_posting_above_toxicity:
+    default: false
     client: false
   disorder_flag_threshold_toxicity:
     default: 70
