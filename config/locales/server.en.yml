@@ -1,0 +1,15 @@
+en:
+  site_settings:
+    disorder_enabled: "Enable the disorder plugin."
+    disorder_inference_service_api_endpoint: "URL where the API is running for the disorder plugin"
+    disorder_inference_service_api_model: "Model to use for inference. Multilingual model works with Italian, French, Russian, Portuguese, Spanish and Turkish."
+    disorder_flag_automatically: "Automatically flag posts / chat messages that are above the configured thresholds."
+    disorder_warn_posting_above_toxicity: "Show a warning to users posting messages above the configured thresholds. Experimental."
+    disorder_block_posting_above_toxicity: "Blocks users from posting messages above the configured threshold. Experimental. Not recommended."
+    disorder_flag_threshold_toxicity: "Toxicity: a rude, disrespectful, or unreasonable comment that is somewhat likely to make you leave a discussion or give up on sharing your perspective"
+    disorder_flag_threshold_severe_toxicity: "Severe Toxicity: a very hateful, aggressive, or disrespectful comment that is very likely to make you leave a discussion or give up on sharing your perspective"
+    disorder_flag_threshold_obscene: "Obscene"
+    disorder_flag_threshold_identity_attack: "Identity Attack"
+    disorder_flag_threshold_insult: "Insult"
+    disorder_flag_threshold_threat: "Threat"
+    disorder_flag_threshold_sexual_explicit: "Sexual Explicit"

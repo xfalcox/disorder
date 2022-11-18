@@ -14,9 +14,12 @@ plugins:
   disorder_flag_automatically:
     default: true
     client: false
+  disorder_warn_posting_above_toxicity:
+    default: false
+    client: true
   disorder_block_posting_above_toxicity:
     default: false
-    client: false
+    client: true
   disorder_flag_threshold_toxicity:
     default: 70
     client: false

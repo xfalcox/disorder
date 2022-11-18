@@ -26,7 +26,7 @@ module ::Disorder
     def flag!
       @object.errors.add :raw,
                          :toxicity_above_threshold,
-                         message: "#{@reasons.join("/")} is too high"
+                         message: "Disorder detected #{@reasons.join("/")} too high"
     end
   end
 end
