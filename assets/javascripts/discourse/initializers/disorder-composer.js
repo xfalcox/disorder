@@ -7,7 +7,7 @@ const PLUGIN_ID = "disorder";
 export default {
   name: "disorder-composer-setup",
   initialize(container) {
-    withPluginApi("0.12.1", (api) => {
+    withPluginApi("1.5.0", (api) => {
       api.modifyClass("model:composer", {
         pluginId: PLUGIN_ID,
         disorderWarned: true,
