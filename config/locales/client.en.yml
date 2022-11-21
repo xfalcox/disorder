@@ -1,0 +1,6 @@
+en:
+  js:
+    disorder:
+      modal_intro: Are you sure about posting that? 🤔
+      warning: The contents of this post may be inflicting our rules of conduct, so we will give you another chance to revise it. Adjust whatever is necessary to keep the discussion civil and try posting again.
+      blocked: The contents of this post were flagged as not acceptable. Please edit your post and try again.
