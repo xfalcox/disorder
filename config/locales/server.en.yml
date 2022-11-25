@@ -13,3 +13,4 @@ en:
     disorder_flag_threshold_insult: "Insult"
     disorder_flag_threshold_threat: "Threat"
     disorder_flag_threshold_sexual_explicit: "Sexual Explicit"
+    disorder_groups_bypass: "Users on those groups will not have their posts classified."

@@ -41,3 +41,10 @@ plugins:
   disorder_flag_threshold_sexual_explicit:
     default: 60
     client: false
+  disorder_groups_bypass:
+    client: true
+    type: group_list
+    list_type: compact
+    default: "3" # 3: @staff
+    allow_any: false
+    refresh: true

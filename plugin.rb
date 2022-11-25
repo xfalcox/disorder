@@ -17,6 +17,7 @@ after_initialize do
   end
 
   SeedFu.fixture_paths << Rails.root.join("plugins", "disorder", "db", "fixtures").to_s
+  require_relative "lib/event_handler.rb"
   require_relative "lib/inference_manager.rb"
   require_relative "lib/classifier.rb"
   require_relative "lib/post_classifier.rb"
@@ -28,18 +29,9 @@ after_initialize do
   add_permitted_post_create_param(:disorder_warned)
   add_permitted_post_update_param(:disorder_warned)
 
-  on(:post_created) { |post| Jobs.enqueue(:classify_post, post_id: post.id) }
-  on(:post_edited) { |post| Jobs.enqueue(:classify_post, post_id: post.id) }
-  on(:chat_message_created) do |chat_message|
-    Jobs.enqueue(:classify_chat_message, chat_message_id: chat_message.id)
-  end
-  on(:chat_message_edited) do |chat_message|
-    Jobs.enqueue(:classify_chat_message, chat_message_id: chat_message.id)
-  end
-  on(:before_create_post) do |post, opts|
-    if SiteSetting.disorder_block_posting_above_toxicity ||
-         (SiteSetting.disorder_warn_posting_above_toxicity && !opts["disorder_warned"])
-      ::Disorder::PostValidator.new(post).classify!
-    end
-  end
+  on(:post_created) { |post| EventHandler.handle_post_async(post) }
+  on(:post_edited) { |post| EventHandler.handle_post_async(post) }
+  on(:chat_message_created) { |chat_message| EventHandler.handle_chat_async(chat_message) }
+  on(:chat_message_edited) { |chat_message| EventHandler.handle_chat_async(chat_message) }
+  on(:before_create_post) { |post, opts| EventHandler.handle_post_sync(post, opts) }
 end
