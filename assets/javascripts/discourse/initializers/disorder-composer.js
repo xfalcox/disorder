@@ -18,7 +18,6 @@ export default {
 
       api.addComposerSaveErrorCallback((error) => {
         if (error.match(/Disorder detected/)) {
-
           // TODO: this is a hack
           let composerPreviewContents = document.querySelector(
             ".topic-post.staged.current-user-post .cooked"

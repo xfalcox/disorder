@@ -22,7 +22,9 @@ RSpec.describe Disorder::PostValidator do
       post = Fabricate(:post)
       classifier = Disorder::PostValidator.new(post)
       classifier.classify!
-      expect(PluginStore.get("disorder", "post_revision_#{post.id}")[0]["classification"]["toxicity"]).to eq(78)
+      expect(
+        PluginStore.get("disorder", "post_revision_#{post.id}")[0]["classification"]["toxicity"],
+      ).to eq(78)
       expect(post.errors[:raw].first).to include("Disorder")
     end
   end

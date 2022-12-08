@@ -12,14 +12,14 @@ RSpec.describe Disorder::EventHandler do
 
   before { SiteSetting.disorder_enabled = true }
 
-  context "posts async classification" do
+  context "for posts async classification" do
     it "enqueues a classification job" do
       creator.create
       expect_job_enqueued(job: :classify_post, args: { post_id: creator.post.id })
     end
   end
 
-  context "chat message async classification" do
+  context "for chat message async classification" do
     it "enqueues a classification job" do
       creator =
         Chat::ChatMessageCreator.create(
@@ -27,7 +27,12 @@ RSpec.describe Disorder::EventHandler do
           user: user,
           content: "2 short",
         )
-      expect_job_enqueued(job: :classify_chat_message, args: { chat_message_id: creator.chat_message.id })
+      expect_job_enqueued(
+        job: :classify_chat_message,
+        args: {
+          chat_message_id: creator.chat_message.id,
+        },
+      )
     end
   end
 end

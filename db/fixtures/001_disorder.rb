@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-disorder_username = 'disorderbot'
+disorder_username = "disorderbot"
 
 def seed_primary_email
   UserEmail.seed do |ue|
@@ -42,21 +42,13 @@ bot.create_user_option! if !bot.user_option
 
 bot.user_option.update!(
   email_messages_level: UserOption.email_level_types[:never],
-  email_level: UserOption.email_level_types[:never]
+  email_level: UserOption.email_level_types[:never],
 )
 
 bot.create_user_profile! if !bot.user_profile
 
-if !bot.user_profile.bio_raw
-  bot.user_profile.update!(
-    bio_raw: I18n.t('disorder_bot.bio')
-  )
-end
+bot.user_profile.update!(bio_raw: I18n.t("disorder_bot.bio")) if !bot.user_profile.bio_raw
 
 Group.user_trust_level_change!(Disorder::BOT_USER_ID, TrustLevel[4])
 
-
-UserAvatar.register_custom_user_gravatar_email_hash(
-  Disorder::BOT_USER_ID,
-  "disorder@falco.dev"
-)
+UserAvatar.register_custom_user_gravatar_email_hash(Disorder::BOT_USER_ID, "disorder@falco.dev")

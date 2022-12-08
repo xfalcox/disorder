@@ -31,7 +31,9 @@ after_initialize do
 
   on(:post_created) { |post| Disorder::EventHandler.handle_post_async(post) }
   on(:post_edited) { |post| Disorder::EventHandler.handle_post_async(post) }
-  on(:chat_message_created) { |chat_message| Disorder::EventHandler.handle_chat_async(chat_message) }
+  on(:chat_message_created) do |chat_message|
+    Disorder::EventHandler.handle_chat_async(chat_message)
+  end
   on(:chat_message_edited) { |chat_message| Disorder::EventHandler.handle_chat_async(chat_message) }
   on(:before_create_post) { |post, opts| Disorder::EventHandler.handle_post_sync(post, opts) }
 end

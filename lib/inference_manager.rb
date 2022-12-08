@@ -2,7 +2,6 @@
 
 module ::Disorder
   class InferenceManager
-
     def self.perform!(content)
       response =
         Faraday.post(
@@ -10,9 +9,9 @@ module ::Disorder
           { model: SiteSetting.disorder_inference_service_api_model, content: content }.to_json,
         )
 
-      raise Net::HTTPBadResponse unless response.status == 200 
+      raise Net::HTTPBadResponse unless response.status == 200
 
-      return JSON.parse(response.body)
+      JSON.parse(response.body)
     end
   end
 end

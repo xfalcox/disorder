@@ -13,13 +13,17 @@ module ::Disorder
         {
           classification: @classification,
           model: SiteSetting.disorder_inference_service_api_model,
-          date: Time.now.utc
+          date: Time.now.utc,
         },
       )
     end
 
     def flag!
-      Chat::ChatReviewQueue.new.flag_message(@object, Guardian.new(flagger), ReviewableScore.types[:inappropriate])
+      Chat::ChatReviewQueue.new.flag_message(
+        @object,
+        Guardian.new(flagger),
+        ReviewableScore.types[:inappropriate],
+      )
     end
   end
 end

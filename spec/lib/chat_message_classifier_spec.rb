@@ -22,7 +22,11 @@ RSpec.describe Disorder::ChatMessageClassifier do
       chat_message = Fabricate(:chat_message)
       classifier = Disorder::ChatMessageClassifier.new(chat_message)
       classifier.classify!
-      expect(PluginStore.get("disorder", "chat_message_#{chat_message.id}")["classification"]["toxicity"]).to eq(78)
+      expect(
+        PluginStore.get("disorder", "chat_message_#{chat_message.id}")["classification"][
+          "toxicity"
+        ],
+      ).to eq(78)
       expect(ReviewableChatMessage.where(target_id: chat_message.id).count).to eq(1)
     end
   end

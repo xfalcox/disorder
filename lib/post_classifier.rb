@@ -5,7 +5,7 @@ module ::Disorder
     def content
       @object.raw
     end
-    
+
     def store_classification
       PostCustomField.create!(
         post_id: @object.id,
@@ -18,12 +18,7 @@ module ::Disorder
     end
 
     def flag!
-      PostActionCreator.create(
-        flagger,
-        @object,
-        :inappropriate,
-        reason: @reasons.join("/"),
-      )
+      PostActionCreator.create(flagger, @object, :inappropriate, reason: @reasons.join("/"))
       @object.publish_change_to_clients! :acted
     end
   end
