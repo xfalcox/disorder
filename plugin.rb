@@ -29,9 +29,9 @@ after_initialize do
   add_permitted_post_create_param(:disorder_warned)
   add_permitted_post_update_param(:disorder_warned)
 
-  on(:post_created) { |post| EventHandler.handle_post_async(post) }
-  on(:post_edited) { |post| EventHandler.handle_post_async(post) }
-  on(:chat_message_created) { |chat_message| EventHandler.handle_chat_async(chat_message) }
-  on(:chat_message_edited) { |chat_message| EventHandler.handle_chat_async(chat_message) }
-  on(:before_create_post) { |post, opts| EventHandler.handle_post_sync(post, opts) }
+  on(:post_created) { |post| Disorder::EventHandler.handle_post_async(post) }
+  on(:post_edited) { |post| Disorder::EventHandler.handle_post_async(post) }
+  on(:chat_message_created) { |chat_message| Disorder::EventHandler.handle_chat_async(chat_message) }
+  on(:chat_message_edited) { |chat_message| Disorder::EventHandler.handle_chat_async(chat_message) }
+  on(:before_create_post) { |post, opts| Disorder::EventHandler.handle_post_sync(post, opts) }
 end
