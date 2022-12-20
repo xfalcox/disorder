@@ -7,6 +7,7 @@ module ::Disorder
         Faraday.post(
           "#{SiteSetting.disorder_inference_service_api_endpoint}/api/v1/classify",
           { model: SiteSetting.disorder_inference_service_api_model, content: content }.to_json,
+          { "Referer" => Discourse.base_url, "Content-Type" => "application/json" },
         )
 
       raise Net::HTTPBadResponse unless response.status == 200
