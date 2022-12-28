@@ -27,7 +27,7 @@ after_initialize do
   require_relative "app/jobs/regular/classify_chat_message.rb"
 
   add_permitted_post_create_param(:disorder_warned)
-  add_permitted_post_update_param(:disorder_warned)
+  add_permitted_post_update_param(:disorder_warned, &Proc.new {})
 
   on(:post_created) { |post| Disorder::EventHandler.handle_post_async(post) }
   on(:post_edited) { |post| Disorder::EventHandler.handle_post_async(post) }
