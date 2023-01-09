@@ -24,9 +24,12 @@ export default {
           ).innerHTML;
 
           let modalMarkup = `
-            <h2 class="disorder-modal-before-post">${I18n.t(
-              "disorder.modal_intro"
-            )}</h2>
+            <h2 class="disorder-modal-before-post">
+              ${I18n.t("disorder.modal.title")}
+            </h2>
+            <p>
+              ${I18n.t("disorder.modal.before_quote")}
+            </p>
             <aside class="quote disorder-content-preview">
             <div class="title" style="cursor: pointer;" data-has-quote-controls="true" dir="ltr">
               <img loading="lazy" alt="" src="${api
@@ -39,12 +42,17 @@ export default {
             </div>
               <blockquote>${composerPreviewContents}</blockquote>
             </aside>
-            <hr>
-            <div class="disorder-intervention-message">${
+            <p>
+              ${I18n.t("disorder.modal.after_quote_1")} <a href="/tos">${I18n.t("conduct")}</a>.
+            </p>
+            <p>
+              ${I18n.t("disorder.modal.after_quote_2")}
+            </p>
+            <p><b>${
               siteSettings.disorder_warn_posting_above_toxicity
-                ? I18n.t("disorder.warning")
-                : I18n.t("disorder.blocked")
-            }</div>
+                ? I18n.t("disorder.modal.action_line_warning")
+                : I18n.t("disorder.modal.action_line_warning")
+            }</b></p>
           `;
           dialog.alert({ message: htmlSafe(modalMarkup) });
 

@@ -1,6 +1,10 @@
 en:
   js:
     disorder:
-      modal_intro: Are you sure about posting that? 🤔
-      warning: The contents of this post may be inflicting our rules of conduct, so we will give you another chance to revise it. Adjust whatever is necessary to keep the discussion civil and try posting again.
-      blocked: The contents of this post were flagged as not acceptable. Please edit your post and try again.
+      modal:
+        title: Hang on a minute...
+        before_quote: Let's take another look at what you have written here.
+        after_quote_1: To keep everything pleasant and constructive we ask our members to follow our 
+        after_quote_2: We think this post conflicts with there rules and contains <u>some harmful or offensive language.</u>
+        action_line_warning: Would you to like to revise this?
+        action_line_blocked: Please edit your post and try again.
