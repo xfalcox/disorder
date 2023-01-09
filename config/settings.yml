@@ -4,6 +4,8 @@ plugins:
     client: true
   disorder_inference_service_api_endpoint:
     default: "https://disorder-testing.demo-by-discourse.com"
+  disorder_inference_service_api_key:
+    default: ''
   disorder_inference_service_api_model:
     type: enum
     default: unbiased

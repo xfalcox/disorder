@@ -1,7 +1,8 @@
 en:
   site_settings:
     disorder_enabled: "Enable the disorder plugin."
-    disorder_inference_service_api_endpoint: "URL where the API is running for the disorder plugin"
+    disorder_inference_service_api_endpoint: "URL where the API is running for the Disorder plugin"
+    disorder_inference_service_api_key: "API key for the Disorder API"
     disorder_inference_service_api_model: "Model to use for inference. Multilingual model works with Italian, French, Russian, Portuguese, Spanish and Turkish."
     disorder_flag_automatically: "Automatically flag posts / chat messages that are above the configured thresholds."
     disorder_warn_posting_above_toxicity: "Show a warning to users posting messages above the configured thresholds. Experimental."
