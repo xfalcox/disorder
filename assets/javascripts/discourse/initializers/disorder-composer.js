@@ -43,7 +43,8 @@ export default {
               <blockquote>${composerPreviewContents}</blockquote>
             </aside>
             <p>
-              ${I18n.t("disorder.modal.after_quote_1")} <a href="/tos">${I18n.t("conduct")}</a>.
+              ${I18n.t("disorder.modal.after_quote_1")} 
+              <a href="/tos">${I18n.t("conduct")}</a>.
             </p>
             <p>
               ${I18n.t("disorder.modal.after_quote_2")}
