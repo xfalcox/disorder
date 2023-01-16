@@ -48,11 +48,11 @@ task "disorder:calibration_stats", [:set_size] => [:environment] do |_, args|
     puts "Median: #{label_not_agreed_scores.sort[label_not_agreed_scores.size / 2]}"
     puts "Stddev: #{Math.sqrt(label_not_agreed_scores.map { (_1 - label_not_agreed_scores.sum(0.0) / label_not_agreed_scores.size)**2 }.sum(0.0) / label_not_agreed_scores.size)}"
 
-    best_cutoff = 0.00
-    best_cutoff_score = 0.00
+    best_cutoff = 0
+    best_cutoff_score = 0
 
-    (0.00..1.00)
-      .step(0.02)
+    (0..100)
+      .step(1)
       .each do |cutoff|
         score =
           label_agreed_scores.count { _1 > cutoff } + label_not_agreed_scores.count { _1 <= cutoff }
